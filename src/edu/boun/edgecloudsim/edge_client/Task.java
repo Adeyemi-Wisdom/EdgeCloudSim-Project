@@ -18,73 +18,94 @@ import org.cloudbus.cloudsim.core.CloudSim;
 import edu.boun.edgecloudsim.utils.Location;
 
 public class Task extends Cloudlet {
-	private Location submittedLocation;
-	private double creationTime;
-	private int type;
-	private int mobileDeviceId;
-	private int hostIndex;
-	private int vmIndex;
-	private int datacenterId;
+    private Location submittedLocation;
+    private double creationTime;
+    private int type;
+    private int mobileDeviceId;
+    private int hostIndex;
+    private int vmIndex;
+    private int datacenterId;
 
-	public Task(int _mobileDeviceId, int cloudletId, long cloudletLength, int pesNumber,
-			long cloudletFileSize, long cloudletOutputSize,
-			UtilizationModel utilizationModelCpu,
-			UtilizationModel utilizationModelRam,
-			UtilizationModel utilizationModelBw) {
-		super(cloudletId, cloudletLength, pesNumber, cloudletFileSize,
-				cloudletOutputSize, utilizationModelCpu, utilizationModelRam,
-				utilizationModelBw);
-		
-		mobileDeviceId = _mobileDeviceId;
-		creationTime = CloudSim.clock();
-	}
+    // New properties
+    private int criticality;
+    private double deadline;
 
-	
-	public void setSubmittedLocation(Location _submittedLocation){
-		submittedLocation =_submittedLocation;
-	}
+    public Task(int _mobileDeviceId, int cloudletId, long cloudletLength, int pesNumber,
+            long cloudletFileSize, long cloudletOutputSize,
+            UtilizationModel utilizationModelCpu,
+            UtilizationModel utilizationModelRam,
+            UtilizationModel utilizationModelBw) {
+        super(cloudletId, cloudletLength, pesNumber, cloudletFileSize,
+                cloudletOutputSize, utilizationModelCpu, utilizationModelRam,
+                utilizationModelBw);
 
-	public void setAssociatedDatacenterId(int _datacenterId){
-		datacenterId=_datacenterId;
-	}
-	
-	public void setAssociatedHostId(int _hostIndex){
-		hostIndex=_hostIndex;
-	}
+        mobileDeviceId = _mobileDeviceId;
+        creationTime = CloudSim.clock();
+    }
 
-	public void setAssociatedVmId(int _vmIndex){
-		vmIndex=_vmIndex;
-	}
-	
-	public void setTaskType(int _type){
-		type=_type;
-	}
+    public void setSubmittedLocation(Location _submittedLocation){
+        submittedLocation =_submittedLocation;
+    }
 
-	public int getMobileDeviceId(){
-		return mobileDeviceId;
-	}
-	
-	public Location getSubmittedLocation(){
-		return submittedLocation;
-	}
-	
-	public int getAssociatedDatacenterId(){
-		return datacenterId;
-	}
-	
-	public int getAssociatedHostId(){
-		return hostIndex;
-	}
+    public void setAssociatedDatacenterId(int _datacenterId){
+        datacenterId=_datacenterId;
+    }
 
-	public int getAssociatedVmId(){
-		return vmIndex;
-	}
-	
-	public int getTaskType(){
-		return type;
-	}
-	
-	public double getCreationTime() {
-		return creationTime;
-	}
+    public void setAssociatedHostId(int _hostIndex){
+        hostIndex=_hostIndex;
+    }
+
+    public void setAssociatedVmId(int _vmIndex){
+        vmIndex=_vmIndex;
+    }
+
+    public void setTaskType(int _type){
+        type=_type;
+    }
+
+    public int getMobileDeviceId(){
+        return mobileDeviceId;
+    }
+
+    public Location getSubmittedLocation(){
+        return submittedLocation;
+    }
+
+    public int getAssociatedDatacenterId(){
+        return datacenterId;
+    }
+
+    public int getAssociatedHostId(){
+        return hostIndex;
+    }
+
+    public int getAssociatedVmId(){
+        return vmIndex;
+    }
+
+    public int getTaskType(){
+        return type;
+    }
+
+    public double getCreationTime() {
+        return creationTime;
+    }
+
+    // New getters/setters for criticality and deadline
+    public int getCriticality() {
+        return criticality;
+    }
+
+    public void setCriticality(int criticality) {
+        this.criticality = criticality;
+    }
+
+    public double getDeadline() {
+        return deadline;
+    }
+
+    public void setDeadline(double deadline) {
+        this.deadline = deadline;
+    }
 }
+

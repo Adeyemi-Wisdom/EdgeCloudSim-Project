@@ -51,7 +51,16 @@ public class SampleScenarioFactory implements ScenarioFactory {
 
 	@Override
 	public EdgeOrchestrator getEdgeOrchestrator() {
-		return new BasicEdgeOrchestrator(orchestratorPolicy, simScenario);
+		// Check if the chosen policy is our new strategy
+		if(orchestratorPolicy.equalsIgnoreCase("MY_NEW_STRATEGY")) {
+			// This will call BasicEdgeOrchestrator, 
+			// but it will run the custom logic you added inside it
+			return new BasicEdgeOrchestrator(orchestratorPolicy, simScenario);
+		}
+		else {
+			// Default orchestrator (random/first/next/best/worst fit etc.)
+			return new BasicEdgeOrchestrator(orchestratorPolicy, simScenario);
+		}
 	}
 
 	@Override
@@ -84,3 +93,4 @@ public class SampleScenarioFactory implements ScenarioFactory {
 		return new DefaultMobileServerManager();
 	}
 }
+

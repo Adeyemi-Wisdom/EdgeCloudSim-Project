@@ -1,3 +1,5 @@
+package edu.boun.edgecloudsim.core;
+
 /*
  * Title:        EdgeCloudSim - Scenarion Factory interface
  * 
@@ -11,7 +13,7 @@
  * Copyright (c) 2017, Bogazici University, Istanbul, Turkey
  */
 
-package edu.boun.edgecloudsim.core;
+
 
 import edu.boun.edgecloudsim.cloud_server.CloudServerManager;
 import edu.boun.edgecloudsim.edge_client.MobileDeviceManager;
